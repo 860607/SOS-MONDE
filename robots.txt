@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+# Remplacez <VOTRE_PSEUDO_GITHUB> par votre pseudo GitHub
+Sitemap: https://<VOTRE_PSEUDO_GITHUB>.github.io/sos-monde/sitemap.xml
