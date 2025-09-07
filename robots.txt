@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://sos.monde/sitemap.xml
+Sitemap: https://860607.github.io/SOS-MONDE/sitemap.xml
