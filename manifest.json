@@ -1,7 +1,6 @@
 {
   "name": "SOS.Monde",
   "short_name": "SOS",
-  "description": "PWA d’urgence multilingue pour accéder aux contacts vitaux et envoyer des alertes.",
   "start_url": "index.html",
   "display": "standalone",
   "theme_color": "#ffffff",

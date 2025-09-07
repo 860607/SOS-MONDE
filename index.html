@@ -1,82 +1,49 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>SOS.Monde – Aide d’urgence</title>
-  <meta name="description" content="PWA d’urgence multilingue pour signaler, alerter et accéder rapidement aux contacts utiles.">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="assets/img/icon-192.png">
-  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <link rel="manifest" href="manifest.json"><link rel="icon" href="assets/img/icon-192.png">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <script>window.SOS={ads:{client:"ca-pub-XXXXXXXXXXXXXXXX",slots:{header:"0000000000",inline:"0000000001"}}};</script>
 </head>
 <body>
-  <div class="a11ybar" id="a11ybar" role="region" aria-label="Options d’accessibilité">
-    <button id="a11y-contrast" title="Contraste élevé">Contraste</button>
-    <button id="a11y-tts" title="Lecture vocale">Lire</button>
-    <button id="a11y-vibe" title="Vibration test">Vibreur</button>
-    <button id="a11y-font" title="Texte grandi">Texte +</button>
+  <div class="a11ybar" id="a11ybar">
+    <button id="a11y-contrast">Contraste</button>
+    <button id="a11y-tts">Lire</button>
+    <button id="a11y-vibe">Vibreur</button>
+    <button id="a11y-font">Texte +</button>
   </div>
-  <div aria-live="polite" class="visually-hidden" id="live"></div>
-
-  <nav>
-    <div class="inner">
-      <div class="logo">SOS.Monde</div>
-      <div class="langs">
-        <button data-lang="fr">FR</button>
-        <button data-lang="en">EN</button>
-        <button data-lang="zh">中文</button>
-        <button data-lang="ja">日本語</button>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container focus-ring">
-    <div id="cmp" class="banner" role="region" aria-label="Consentement">
-      <p id="cmp-text">Nous utilisons des cookies pour améliorer le service et afficher des publicités. Acceptez-vous ?</p>
-      <p>
-        <button id="cmp-accept">Accepter</button>
-        <button id="cmp-decline">Refuser</button>
-      </p>
-    </div>
-
-    <div class="ads" id="ad-header">Espace pub (header)</div>
-
+  <nav><div class="inner"><div class="logo">SOS.Monde</div>
+    <div class="langs"><button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="zh">中文</button><button data-lang="ja">日本語</button></div>
+  </div></nav>
+  <div class="container">
+    <div id="cmp" class="card"><p id="cmp-text">Nous utilisons des cookies pour améliorer le service et afficher des publicités. Acceptez-vous ?</p>
+      <p><button id="cmp-accept">Accepter</button> <button id="cmp-decline">Refuser</button></p></div>
     <div class="card">
       <h1 data-i18n="headline">Aide d’urgence, partout, tout de suite</h1>
       <p data-i18n="tagline">Accédez rapidement aux contacts vitaux, partagez votre position et envoyez des alertes.</p>
-
-      <div class="card">
-        <h2 data-i18n="quickActions">Actions rapides</h2>
-        <p>
-          <button id="btn-sos" class="button" data-i18n="btnSOS">Envoyer un SOS</button>
-          <button id="btn-location" class="button" data-i18n="btnLocation">Partager ma position</button>
-          <button id="btn-call" class="button" data-i18n="btnCall">Appeler les secours</button>
-          <button id="btn-whatsapp" class="button" data-i18n="btnWhatsApp">📲 WhatsApp SOS</button>
-          <button id="btn-sms" class="button" data-i18n="btnSMS">✉️ SMS SOS</button>
-        </p>
-        <p id="out"></p>
-      </div>
+      <p>
+        <button id="btn-sos" class="button" data-i18n="btnSOS">Envoyer un SOS</button>
+        <button id="btn-location" class="button" data-i18n="btnLocation">Partager ma position</button>
+        <button id="btn-call" class="button" data-i18n="btnCall">Appeler les secours</button>
+        <button id="btn-whatsapp" class="button" data-i18n="btnWhatsApp">📲 WhatsApp SOS</button>
+        <button id="btn-sms" class="button" data-i18n="btnSMS">✉️ SMS SOS</button>
+      </p>
+      <p id="out"></p>
     </div>
-
     <div class="grid">
       <div class="card" id="profile-card">
-        <h2 class="section-title">Fiche SOS</h2>
-        <p class="muted">Ces informations (localStorage) peuvent être incluses dans vos messages SOS.</p>
+        <h2>Fiche SOS</h2>
         <div class="form">
           <label>Nom <input id="p-name" type="text" placeholder="(optionnel)"></label>
           <label>Groupe sanguin <input id="p-blood" type="text" placeholder="O+ / A- ..."></label>
           <label>Allergies <input id="p-allergy" type="text" placeholder="ex: pénicilline"></label>
-          <label>Contact proche (WhatsApp/SMS) <input id="p-ice" type="tel" placeholder="+237..."></label>
+          <label>Contact proche <input id="p-ice" type="tel" placeholder="+237..."></label>
         </div>
         <p><button class="button" id="save-profile">💾 Enregistrer la fiche</button> <span id="save-status" class="badge">Non enregistré</span></p>
       </div>
-
       <div class="card" id="big-buttons">
-        <h2 class="section-title">Appels directs</h2>
-        <p class="muted">Numéros du pays sélectionné</p>
+        <h2>Appels directs</h2><p class="muted">Numéros du pays sélectionné</p>
         <div class="bigbtns">
           <a id="call-police" class="bigbtn" href="#"><span>🚓</span><small>Police</small></a>
           <a id="call-ambulance" class="bigbtn" href="#"><span>🚑</span><small>Ambulance</small></a>
@@ -84,54 +51,30 @@
         </div>
       </div>
     </div>
-
     <div class="card">
-      <h2 class="section-title">Numéros d'urgence par pays</h2>
-      <p><label for="countrySel">Choisir le pays :</label>
-      <select id="countrySel"></select></p>
+      <h2>Numéros d'urgence par pays</h2>
+      <p><label for="countrySel">Choisir le pays :</label><select id="countrySel"></select></p>
       <div id="nums"></div>
     </div>
-
     <div class="card" id="contacts-card">
-      <h2 class="section-title">Contacts utiles</h2>
-      <div id="contacts-list" class="contactlist"></div>
+      <h2>Contacts utiles</h2><div id="contacts-list" class="contactlist"></div>
     </div>
-
     <div class="card" id="alert-card">
-      <h2 class="section-title">Mode alerte</h2>
-      <p class="muted">Déclenche un son d’alerte et un clignotement visuel pour attirer l’attention.</p>
-      <p>
-        <button id="btn-alert-on" class="button">🚨 Activer l’alerte</button>
-        <button id="btn-alert-off" class="button">🛑 Stop</button>
-        <button id="btn-ultimate" class="button">🆘 SOS Ultime</button>
-      </p>
+      <h2>Mode alerte</h2><p class="muted">Déclenche un son d’alerte et un clignotement visuel.</p>
+      <p><button id="btn-alert-on" class="button">🚨 Activer l’alerte</button>
+         <button id="btn-alert-off" class="button">🛑 Stop</button>
+         <button id="btn-ultimate" class="button">🆘 SOS Ultime</button></p>
       <audio id="siren" loop></audio>
     </div>
-
     <div class="card" id="journal-card">
-      <h2 class="section-title">Historique des alertes</h2>
-      <div id="journal"></div>
+      <h2>Historique des alertes</h2><div id="journal"></div>
       <p><button id="journal-clear" class="button">🧹 Nettoyer l’historique</button></p>
     </div>
-
-    <div class="ads" id="ad-inline">Espace pub (inline)</div>
-
-    <footer>
-      <div>Propriété intellectuelle de <strong>BIBI ONDOUA</strong> – contact : <a href="mailto:b.ondoua00@gmail.com">b.ondoua00@gmail.com</a></div>
-      <div><a href="ads.txt">ads.txt</a> · <a href="robots.txt">robots.txt</a> · <a href="sitemap.xml">sitemap</a></div>
-      <div>Version <span id="ver"></span></div>
-    </footer>
+    <footer><div>Version <span id="ver"></span></div></footer>
   </div>
-
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/emergency.js"></script>
   <script src="assets/js/country-flags.js"></script>
   <script src="assets/js/app.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
-    }
-    document.getElementById('ver').textContent = new Date().toISOString().slice(0,10);
-  </script>
-</body>
-</html>
+  <script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));}document.getElementById('ver').textContent=new Date().toISOString().slice(0,10);</script>
+</body></html>
