@@ -1,18 +1,23 @@
-# SOS.Monde (starter statique)
+# SOS.Monde — Starter PWA
 
-Ce dépôt contient une base **très simple** de site statique prêt pour **GitHub Pages** avec :
-- PWA minimale (manifest + service worker)
-- i18n simple (FR/EN/zh/ja)
-- Bandeau de **consentement cookies** (minimal)
-- Emplacement pour **Google AdSense** (chargé uniquement si consentement)
-- Fichiers SEO : `robots.txt`, `sitemap.xml`, `ads.txt`
+Ce dépôt contient un squelette minimal pour le site **SOS.Monde** :
+- PWA (manifest + service worker)
+- Multilingue (FR/EN/zh/ja) via un dictionnaire simple
+- Fond clair, design minimal
+- Emplacements publicitaires Google AdSense (header + inline) — à activer après consentement
+- Footer avec mentions, ads.txt, robots.txt, sitemap.xml
 
-## Étapes rapides
-1. Uploadez tous les fichiers à la racine du dépôt.
-2. Dans **Settings → Pages** : Source = *Deploy from a branch*, Branch = `main`, dossier = `/`.
-3. Visitez l’URL affichée dans Settings → Pages (ex. `https://<VOTRE_PSEUDO_GITHUB>.github.io/sos-monde/`).
+## Démarrage local
+Servez le dossier à la racine avec un petit serveur local (ex. `npx serve`), puis ouvrez `http://localhost:3000`.
+
+## Déploiement rapide
+- **GitHub Pages** : mettez tout à la racine du dépôt `main` et activez Pages (branch `main`, folder `/root`).
+- **Netlify/Vercel** : import du dépôt → build command vide, output dir `/`.
 
 ## À personnaliser
-- Dans `sitemap.xml` et `robots.txt`, remplacez `<VOTRE_PSEUDO_GITHUB>` par votre pseudo.
-- Dans `index.html`, mettez vos identifiants AdSense (`ca-pub-...` et `data-ad-slot`).
-- Dans `ads.txt`, mettez votre `pub-...` AdSense.
+- Remplacez `ca-pub-XXXXXXXXXXXXXXXX` et les `ad slot` dans `index.html`.
+- Personnalisez les textes i18n dans `assets/js/i18n.js`.
+- Ajoutez des pages ou sections.
+- Remplacez les icônes dans `assets/img/`.
+
+Propriété intellectuelle de **BIBI ONDOUA** — contact : b.ondoua00@gmail.com

@@ -1,209 +1,159 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- SEO de base -->
-  <title>SOS.Monde – Aide d’urgence, partout</title>
-  <meta name="description" content="Plateforme universelle d’aide d’urgence : appeler les secours locaux, partager des infos vitales, disponible dans de nombreuses langues." />
-  <link rel="canonical" href="https://860607.github.io/SOS-MONDE/" />
-
-  <!-- Open Graph (partage réseaux) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://860607.github.io/SOS-MONDE/">
-  <meta property="og:title" id="og-title" content="SOS.Monde – Aide d’urgence, partout">
-  <meta property="og:description" id="og-desc" content="Plateforme universelle d’aide d’urgence : appeler les secours locaux, partager des infos vitales.">
-  <meta property="og:image" content="https://860607.github.io/SOS-MONDE/icons/icon-512.png">
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.webmanifest">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SOS.Monde – Aide d’urgence</title>
+  <meta name="description" content="PWA d’urgence multilingue pour signaler, alerter et accéder rapidement aux contacts utiles.">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#ffffff">
-  <link rel="icon" href="icons/icon-192.png">
+  <link rel="icon" href="/assets/img/icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="stylesheet" href="/assets/css/styles.css">
 
-  <!-- (Optionnel) Balises Google à coller quand tu les auras -->
-  <!-- <meta name="google-site-verification" content="COLLE_LE_CODE_ICI"> -->
-  <!-- <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX"> -->
+  <!-- Google AdSense (remplacez par votre ca-pub) -->
+  <!--
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          crossorigin="anonymous"></script>
+  -->
 
-  <style>
-    :root { color-scheme: light; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#fff; color:#111; }
-    header { padding:16px; border-bottom:1px solid #eee; background:#fafafa; }
-    .container { max-width:960px; margin:0 auto; padding:16px; }
-    h1 { margin:0 0 8px; font-size:28px; }
-    main { padding:24px 16px; }
-    .card { background:#fff; border:1px solid #eee; border-radius:12px; padding:16px; box-shadow:0 2px 8px rgba(0,0,0,.04); }
-    .row { display:flex; gap:12px; flex-wrap:wrap; }
-    button.primary { margin:8px 8px 0 0; padding:12px 16px; font-size:16px; border-radius:10px; border:1px solid #ddd; background:#f3f3f3; cursor:pointer; }
-    button.primary:active { transform:translateY(1px); }
-    footer { padding:24px 16px; border-top:1px solid #eee; color:#444; background:#fafafa; text-align:center; }
-    #ads-area { min-height:90px; }
-    select { padding:6px 10px; border-radius:8px; border:1px solid #ddd; }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-      <div>
-        <h1>SOS.Monde</h1>
-        <small>Propriété intellectuelle de <strong>BIBI ONDOUA</strong> — Contact : <a href="mailto:b.ondoua00@gmail.com">b.ondoua00@gmail.com</a></small>
-      </div>
-      <div>
-        <label for="lang">Langue :</label>
-        <select id="lang" aria-label="Choisir la langue">
-          <option value="fr">Français</option>
-          <option value="en">English</option>
-          <option value="zh">中文</option>
-          <option value="ja">日本語</option>
-        </select>
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    <div class="card">
-      <h2 id="t-title"></h2>
-      <p id="t-desc" style="margin-top:-6px;"></p>
-
-      <div class="row">
-        <button class="primary" onclick="window.location.href='tel:112'">📞 Appeler les urgences (112)</button>
-        <button class="primary" onclick="navigator.share ? navigator.share({title:'SOS.Monde', url:location.href}) : alert('Le partage n’est pas supporté par ce navigateur');">🔗 Partager</button>
-      </div>
-
-      <div id="ads-area" style="margin-top:20px;">
-        <!-- Espace pub — AdSense ne se chargera que si l’utilisateur accepte le consentement -->
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <small>&copy; <span id="year"></span> SOS.Monde — Tous droits réservés — <a href="privacy.html">Politique de confidentialité</a></small>
-  </footer>
-
-  <!-- i18n + SEO dynamiques -->
   <script>
-    const i18n = {
-      fr: {
-        uiTitle: "Aide d’urgence, partout",
-        uiDesc:  "Outils rapides pour contacter les secours et partager des infos vitales.",
-        seoTitle: "SOS.Monde – Aide d’urgence, partout",
-        seoDesc:  "Plateforme universelle d’aide d’urgence : appeler les secours locaux, partager des infos vitales."
-      },
-      en: {
-        uiTitle: "Emergency help, everywhere",
-        uiDesc:  "Fast tools to contact emergency services and share vital info.",
-        seoTitle: "SOS.Monde – Global emergency help",
-        seoDesc:  "Universal emergency help platform: call local emergency numbers and share vital information."
-      },
-      zh: {
-        uiTitle: "全球紧急援助",
-        uiDesc:  "快速联系急救服务，分享关键信息。",
-        seoTitle: "SOS.Monde – 全球紧急援助",
-        seoDesc:  "通用紧急援助平台：联系本地急救号码并共享重要信息。"
-      },
-      ja: {
-        uiTitle: "世界中で使える緊急支援",
-        uiDesc:  "緊急連絡と重要情報の共有をすばやく。",
-        seoTitle: "SOS.Monde – 世界の緊急支援",
-        seoDesc:  "緊急連絡と重要情報共有のためのユニバーサルプラットフォーム。"
+    // Configuration simple
+    window.SOS = {
+      ads: {
+        client: "ca-pub-XXXXXXXXXXXXXXXX", // <- remplacez par votre ID
+        slots: {
+          header: "0000000000",
+          inline: "0000000001"
+        }
       }
     };
-
-    const supported = Object.keys(i18n);
-
-    // utilitaires
-    const $ = sel => document.querySelector(sel);
-    function setSEO(lang) {
-      const t = i18n[lang] || i18n.en;
-      document.title = t.seoTitle;
-      let md = document.querySelector('meta[name="description"]');
-      if (!md) { md = document.createElement('meta'); md.name = 'description'; document.head.appendChild(md); }
-      md.setAttribute('content', t.seoDesc);
-      $('#og-title')?.setAttribute('content', t.seoTitle);
-      $('#og-desc')?.setAttribute('content', t.seoDesc);
-    }
-    function applyLang(lang) {
-      const l = supported.includes(lang) ? lang : 'en';
-      const t = i18n[l];
-      document.documentElement.lang = l;
-      $('#t-title').textContent = t.uiTitle;
-      $('#t-desc').textContent  = t.uiDesc;
-      setSEO(l);
-      localStorage.setItem('lang', l);
-      // Met à jour l’URL avec ?lang=xx (utile pour partager un lien dans une langue)
-      const url = new URL(window.location);
-      url.searchParams.set('lang', l);
-      history.replaceState({}, '', url);
-      // Met à jour le select
-      const sel = $('#lang'); if (sel) sel.value = l;
-    }
-
-    // Détection : URL > mémoire locale > langue navigateur
-    const urlLang = new URL(location.href).searchParams.get('lang');
-    const saved   = localStorage.getItem('lang');
-    const browser = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').slice(0,2).toLowerCase();
-    const initial = urlLang && supported.includes(urlLang) ? urlLang
-                    : saved && supported.includes(saved) ? saved
-                    : supported.includes(browser) ? browser
-                    : 'en';
-    applyLang(initial);
-
-    // Changement manuel
-    $('#lang').addEventListener('change', e => applyLang(e.target.value));
-    $('#year').textContent = new Date().getFullYear();
   </script>
-
-  <!-- CMP (consentement) + chargement AdSense si accepté -->
-  <div id="cmp" style="position:fixed;left:0;right:0;bottom:0;padding:12px;background:#f3f3f3;border-top:1px solid #ddd;display:none;">
-    <strong>Cookies</strong> : accepter les cookies permet d’afficher des publicités pour financer le service.
-    <button id="cmp-accept">Accepter</button>
-    <button id="cmp-reject">Refuser</button>
-    <a href="privacy.html">En savoir plus</a>
+</head>
+<body>
+  <div id="a11y-bar" class="a11y-bar">
+    <button id="a11y-contrast">👁️ Contraste</button>
+    <button id="a11y-tts">🔊 Lire</button>
+    <button id="a11y-vibrate">📳 Vibrer</button>
+    <span class="muted">Options accessibilité</span>
   </div>
-  <script>
-    const CMP_KEY = "sosmonde-consent";
-    const consent = localStorage.getItem(CMP_KEY);
-    const cmp = document.getElementById('cmp');
-    if (consent === null) cmp.style.display = 'block';
 
-    document.getElementById('cmp-accept').onclick = () => {
-      localStorage.setItem(CMP_KEY, 'granted');
-      cmp.style.display = 'none';
-      loadAds();
-    };
-    document.getElementById('cmp-reject').onclick = () => {
-      localStorage.setItem(CMP_KEY, 'denied');
-      cmp.style.display = 'none';
-    };
+  
+  <div class="a11ybar" id="a11ybar" role="region" aria-label="Options d’accessibilité">
+    <button id="a11y-contrast" title="Contraste élevé"><img src="/assets/img/icons/contrast.svg" alt="">Contraste</button>
+    <button id="a11y-tts" title="Lecture vocale"><img src="/assets/img/icons/speak.svg" alt="">Lire</button>
+    <button id="a11y-vibe" title="Vibration test"><img src="/assets/img/icons/vibrate.svg" alt="">Vibreur</button>
+    <button id="a11y-font" title="Texte grandi"><img src="/assets/img/icons/font.svg" alt="">Texte +</button>
+  </div>
+  <div aria-live="polite" class="visually-hidden" id="live"></div>
 
-    function loadAds() {
-      if (localStorage.getItem(CMP_KEY) !== 'granted') return;
-      const s = document.createElement('script');
-      s.async = true;
-      s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX";
-      s.crossOrigin = "anonymous";
-      document.head.appendChild(s);
+  <nav>
+    <div class="inner">
+      <div class="logo">SOS.Monde</div>
+      <div class="langs">
+        <button data-lang="fr">FR</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="zh">中文</button>
+        <button data-lang="ja">日本語</button>
+      </div>
+    </div>
+  </nav>
 
-      const ins = document.createElement('ins');
-      ins.className = "adsbygoogle";
-      ins.style.display = "block";
-      ins.setAttribute("data-ad-client", "ca-pub-XXXXXXXXXXXXXXXX");
-      ins.setAttribute("data-ad-slot", "0000000000");
-      ins.setAttribute("data-ad-format", "auto");
-      ins.setAttribute("data-full-width-responsive", "true");
-      document.getElementById('ads-area').appendChild(ins);
+  <div class="container">
+    <div id="cmp" class="banner" role="region" aria-label="Consentement">
+      <p id="cmp-text">Nous utilisons des cookies pour améliorer le service et afficher des publicités. Acceptez-vous ?</p>
+      <p>
+        <button id="cmp-accept">Accepter</button>
+        <button id="cmp-decline">Refuser</button>
+      </p>
+    </div>
 
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
-    loadAds();
-  </script>
+    <!-- Header Ad placeholder -->
+    <div class="ads" id="ad-header">Espace pub (header)</div>
 
-  <!-- Service Worker (PWA / mode hors-ligne) -->
+    <div class="card">
+      <h1 data-i18n="headline">Aide d’urgence, partout, tout de suite</h1>
+      <p data-i18n="tagline">Accédez rapidement aux contacts vitaux, partagez votre position et envoyez des alertes.</p>
+
+      <div class="card">
+        <h2 data-i18n="quickActions">Actions rapides</h2>
+        <p>
+          <button id="btn-sos" data-i18n="btnSOS">Envoyer un SOS</button>
+          <button id="btn-location" data-i18n="btnLocation">Partager ma position</button>
+          <button id="btn-call" data-i18n="btnCall">Appeler les secours</button>
+          <button id="btn-whatsapp">📲 WhatsApp SOS</button>
+          <button id="btn-sms">✉️ SMS SOS</button>
+        </p>
+        <p id="out"></p>
+      </div>
+
+      
+    <div class="grid">
+      <div class="card" id="profile-card">
+        <h2 class="section-title"><img src="/assets/img/icons/access.svg" alt="">Fiche SOS</h2>
+        <p class="muted">Ces informations (localStorage) peuvent être incluses dans vos messages SOS.</p>
+        <div class="form">
+          <label>Nom <input id="p-name" type="text" placeholder="(optionnel)"></label>
+          <label>Groupe sanguin <input id="p-blood" type="text" placeholder="O+ / A- ..."></label>
+          <label>Allergies <input id="p-allergy" type="text" placeholder="ex: pénicilline"></label>
+          <label>Contact proche (WhatsApp/SMS) <input id="p-ice" type="tel" placeholder="+237..."></label>
+        </div>
+        <p><button class="button" id="save-profile">💾 Enregistrer la fiche</button> <span id="save-status" class="badge">Non enregistré</span></p>
+      </div>
+
+      <div class="card" id="big-buttons">
+        <h2 class="section-title"><img src="/assets/img/icons/police.svg" alt="">Appels directs</h2>
+        <p class="muted">Numéros du pays sélectionné</p>
+        <div class="bigbtns">
+          <a id="call-police" class="bigbtn" href="#"><span>🚓</span><small>Police</small></a>
+          <a id="call-ambulance" class="bigbtn" href="#"><span>🚑</span><small>Ambulance</small></a>
+          <a id="call-fire" class="bigbtn" href="#"><span>🚒</span><small>Pompiers</small></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="contacts-card">
+      <h2 class="section-title"><img src="/assets/img/icons/ambulance.svg" alt="">Contacts utiles</h2>
+      <div id="contacts-list" class="contactlist"></div>
+    </div>
+
+    <div class="card" id="alert-card">
+      <h2 class="section-title"><img src="/assets/img/icons/sos.svg" alt="">Mode alerte</h2>
+      <p class="muted">Déclenche un son d’alerte et un clignotement visuel pour attirer l’attention.</p>
+      <p>
+        <button id="btn-alert-on" class="button">🚨 Activer l’alerte</button>
+        <button id="btn-alert-off" class="button">🛑 Stop</button>
+        <button id="btn-ultimate" class="button">🆘 SOS Ultime</button>
+      </p>
+      <audio id="siren" loop></audio>
+    </div>
+
+    <div class="card" id="journal-card">
+      <h2 class="section-title"><img src="/assets/img/icons/sms.svg" alt="">Historique des alertes</h2>
+      <div id="journal"></div>
+      <p><button id="journal-clear" class="button">🧹 Nettoyer l’historique</button></p>
+    </div>
+    
+      <!-- Inline Ad placeholder -->
+      <div class="ads" id="ad-inline">Espace pub (inline)</div>
+    </div>
+
+    <footer>
+      <div>Propriété intellectuelle de <strong>BIBI ONDOUA</strong> – contact : <a href="mailto:b.ondoua00@gmail.com">b.ondoua00@gmail.com</a></div>
+      <div><a href="/ads.txt">ads.txt</a> · <a href="/robots.txt">robots.txt</a> · <a href="/sitemap.xml">sitemap</a></div>
+      <div>Version <span id="ver"></span></div>
+    </footer>
+  </div>
+
+  <script src="/assets/js/i18n.js"></script>
+  <script src="/assets/js/emergency.js"></script>
+  <script src="/assets/js/country-flags.js"></script>
+  <script src="/assets/js/app.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
     }
+    document.getElementById('ver').textContent = new Date().toISOString().slice(0,10);
   </script>
 </body>
 </html>
