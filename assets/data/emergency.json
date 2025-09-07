@@ -1,0 +1,7 @@
+{
+  "default": { "general": "112" },
+  "CM": { "country": "Cameroon" },
+  "FR": { "country": "France" },
+  "US": { "country": "United States" },
+  "CA": { "country": "Canada" }
+}
