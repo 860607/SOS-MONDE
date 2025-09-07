@@ -1,0 +1,64 @@
+name: Generate local flags
+on:
+  workflow_dispatch:          # bouton "Run workflow"
+  push:
+    paths:
+      - assets/data/emergency.json   # relance si tu modifies la liste des pays
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write           # permet de committer les fichiers générés
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare tools
+        run: |
+          set -e
+          sudo apt-get update
+          sudo apt-get install -y jq curl
+
+      - name: Ensure folders
+        run: |
+          SIZE=24x18
+          mkdir -p assets/img/flags/$SIZE
+
+      - name: Build country list from emergency.json
+        run: |
+          set -e
+          jq -r 'keys[] | select(. != "default")' assets/data/emergency.json \
+            | tr '[:upper:]' '[:lower:]' | sort -u > codes.txt
+          echo "Will download $(wc -l < codes.txt) flags"
+
+      - name: Download flags locally
+        run: |
+          set -e
+          SIZE=24x18
+          while read code; do
+            [ -z "$code" ] && continue
+            out="assets/img/flags/$SIZE/$code.png"
+            [ -f "$out" ] && continue
+            url="https://flagcdn.com/$SIZE/$code.png"
+            echo "↓ $url"
+            curl -fsSL "$url" -o "$out" || echo "MISS $code"
+          done < codes.txt
+
+      - name: Switch country-flags.js to local images
+        run: |
+          SIZE=24x18
+          sed -i "s|https://flagcdn.com/[0-9]\+x[0-9]\+/\${code.toLowerCase()}.png|assets/img/flags/$SIZE/\${code.toLowerCase()}.png|g" assets/js/country-flags.js || true
+          grep -q 'assets/img/flags' assets/js/country-flags.js || cat >> assets/js/country-flags.js <<'EOF'
+          function flagURL(code){ code=(code||'').toLowerCase(); return `assets/img/flags/24x18/${code}.png`; }
+          EOF
+
+      - name: Bump SW cache (force refresh)
+        run: |
+          ts=$(date +%s)
+          sed -i "s/const CACHE='[^']*'/const CACHE='sos-monde-${ts}'/g" sw.js || true
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(flags): download local flags & switch to local assets"
+
