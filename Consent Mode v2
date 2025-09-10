@@ -1,0 +1,19 @@
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Par défaut: tout refusé (avant le clic)
+  gtag('consent','default',{
+    ad_storage:'denied',analytics_storage:'denied',
+    ad_user_data:'denied',ad_personalization:'denied',
+    wait_for_update:500
+  });
+  // Fonctions à appeler depuis tes boutons
+  window.acceptCookies = ()=> gtag('consent','update',{
+    ad_storage:'granted',analytics_storage:'granted',
+    ad_user_data:'granted',ad_personalization:'granted'
+  });
+  window.rejectCookies = ()=> gtag('consent','update',{
+    ad_storage:'denied',analytics_storage:'denied',
+    ad_user_data:'denied',ad_personalization:'denied'
+  });
+</script>
