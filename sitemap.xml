@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://860607.github.io/SOS-MONDE/</loc><lastmod>2025-09-07</lastmod><priority>1.00</priority></url>
-</urlset> <!-- Google AdSense global (obligatoire pour validation) -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2127913069931786"
-  crossorigin="anonymous"></script>
+  <url>
+    <loc>https://860607.github.io/SOS-MONDE/</loc>
+  </url>
+  <url>
+    <loc>https://860607.github.io/SOS-MONDE/privacy.html</loc>
+  </url>
+</urlset>
