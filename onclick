@@ -1,0 +1,2 @@
+<button onclick="acceptCookies()">Accepter</button>
+<button onclick="rejectCookies()">Refuser</button>
