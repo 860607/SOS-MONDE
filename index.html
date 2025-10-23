@@ -1,0 +1,187 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SOS.Monde – L’application qui sauve des vies</title>
+  <meta name="description"
+        content="SOS.Monde alerte, protège et guide face aux dangers partout dans le monde. Bouton SOS, partage de position, premiers secours, numéros utiles." />
+  <link rel="canonical" href="https://sos-monde.com/" />
+
+  <!-- PWA -->
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
+  <!-- Open Graph (partage) -->
+  <meta property="og:title" content="SOS.Monde – L’application qui sauve des vies">
+  <meta property="og:description" content="Bouton SOS, partage de position, premiers secours et numéros utiles, partout dans le monde.">
+  <meta property="og:url" content="https://sos-monde.com/">
+  <meta property="og:type" content="website">
+
+  <style>
+    :root{--c:#0ea5e9;--c2:#0369a1;--bg:#f8fafc}
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.5 system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b1320}
+    .wrap{max-width:1100px;margin:40px auto;padding:0 16px}
+    .hero{background:white;border-radius:18px;box-shadow:0 10px 30px rgba(2,6,23,.05);padding:28px}<!-- PRESENTATION -->
+<section class="card fade-in" id="presentation" style="margin-top:16px">
+  <h2 style="margin:0 0 8px">Pourquoi SOS.Monde ?</h2>
+  <p class="muted" style="margin:0">
+    Chaque minute compte. SOS.Monde rassemble en un seul endroit un bouton SOS, le partage de position,
+    des gestes de premiers secours et les numéros essentiels. Pas de compte, gratuit, pensé pour fonctionner
+    partout et vite.
+  </p>
+</section>
+
+<section class="grid fade-in" style="margin-top:12px">
+  <div class="card">
+    <div class="num">🚨 Appel SOS immédiat</div>
+    <p class="muted">112 par défaut (911 si tu es en Amérique du Nord). Un réflexe simple qui peut tout changer.</p>
+  </div>
+  <div class="card">
+    <div class="num">📍 Partage de position</div>
+    <p class="muted">Envoie ta localisation à un proche ou aux secours en quelques secondes.</p>
+  </div>
+  <div class="card">
+    <div class="num">🩹 Gestes vitaux</div>
+    <p class="muted">Des instructions claires pour agir sans paniquer : sécurité, PLS, massage cardiaque, etc.</p>
+  </div>
+  <div class="card">
+    <div class="num">☎️ Numéros utiles</div>
+    <p class="muted">Accès rapide aux numéros essentiels depuis n’importe où.</p>
+  </div>
+</section>
+
+<section class="card fade-in" style="margin-top:12px">
+  <h3 style="margin:0 0 8px">Nos engagements</h3>
+  <ul class="muted" style="margin:0;padding-left:18px">
+    <li>🔒 <b>Vie privée</b> : pas de compte, pas de profil, pas de revente de données.</li>
+    <li>📲 <b>Gratuit & installable</b> comme une appli (PWA) sur iOS/Android/desktop.</li>
+    <li>🌍 <b>Accessible partout</b> : rapide, lisible, fonctionne même avec peu de réseau.</li>
+  </ul>
+</section>
+
+<section class="card fade-in" style="margin-top:12px">
+  <h3 style="margin:0 0 8px">Comment ça marche ?</h3>
+  <ol class="muted" style="margin:0;padding-left:18px">
+    <li>Installe l’appli pour un accès direct (bouton ci-dessous).</li>
+    <li>Ajoute un raccourci sur l’écran d’accueil.</li>
+    <li>Partage l’appli autour de toi : famille, amis, collègues.</li>
+  </ol>
+  <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+    <button id="ctaInstall" class="btn btn-install">Installer l’appli</button>
+    <a class="btn btn-outline" href="#premiers-secours">Voir les gestes vitaux</a>
+  </div>
+</section>
+
+<section class="card fade-in" style="margin-top:12px">
+  <h3 style="margin:0 0 8px">Rejoins le mouvement</h3>
+  <p class="muted" style="margin:0">
+    SOS.Monde est un réflexe simple à partager en famille, entre amis, dans une équipe, une association ou une entreprise.
+    Ensemble, on gagne des minutes qui sauvent des vies.
+  </p>
+</section>
+
+<script>
+  // Relier le bouton de cette section au bouton d’installation de l’en-tête (s’il existe)
+  document.getElementById('ctaInstall')?.addEventListener('click', () => {
+    document.getElementById('installBtn')?.click();
+  });
+</script>
+
+    h1{font-size:clamp(28px,4vw,40px);margin:0 0 10px}
+    p.lead{font-size:clamp(16px,2.3vw,20px);color:#334155;margin:0 0 22px}
+    .btns{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:14px;border:none;cursor:pointer;font-weight:700;text-decoration:none}
+    .btn.sos{background:#ef4444;color:#fff}
+    .btn.loc,.btn.first{background:#e0f2fe;color:#0c4a6e}
+    .card{background:white;border-radius:16px;padding:18px;margin-top:18px}
+    .muted{color:#475569}
+    .numlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px}
+    .num{background:#f1f5f9;border-radius:12px;padding:10px}
+    small{color:#64748b}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>🌍 SOS.Monde</h1>
+      <p class="lead">L’application qui alerte, protège et guide face aux dangers partout dans le monde.
+        Recevez des notifications, éloignez-vous des zones à risque, trouvez de l’aide autour de vous et
+        accédez aux numéros essentiels en un clic.</p>
+
+      <div class="btns">
+        <a id="btnSOS" class="btn sos" href="tel:112">🚨 Bouton SOS</a>
+        <button id="btnLoc" class="btn loc">📍 Partager ma position</button>
+        <a href="#premiers-secours" class="btn first">🩹 Premiers secours</a>
+      </div>
+
+      <div class="card muted">
+        <b>Astuce :</b> le 112 fonctionne dans la plupart des pays. Si le 112 ne répond pas,
+        essayez le 911. Désactive le mode avion et assure-toi d’avoir un signal réseau.
+      </div>
+    </div>
+
+    <div class="card" id="result" aria-live="polite"></div>
+
+    <div class="card" id="premiers-secours">
+      <h2>Premiers secours – gestes vitaux</h2>
+      <ol>
+        <li>Mettre en sécurité (toi, les victimes, les témoins).</li>
+        <li>Appeler les secours (112). Donner l’adresse ou partager ta position.</li>
+        <li>Dégager les voies aériennes, vérifier respiration et saignements.</li>
+        <li>Compression d’un saignement fort, PLS si inconscient qui respire.</li>
+        <li>Massage cardiaque 100–120/min si pas de respiration. Défibrillateur (DEA) si dispo.</li>
+      </ol>
+      <p class="muted"><small>Ces informations ne remplacent pas une formation de premiers secours.</small></p>
+    </div>
+
+    <div class="card">
+      <h2>Numéros essentiels (généraux)</h2>
+      <div class="numlist">
+        <div class="num">🚑 Urgences <b>112</b></div>
+        <div class="num">🚓 Police <b>112</b></div>
+        <div class="num">🔥 Pompiers <b>112</b></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // PWA : enregistre le service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(()=>{});
+    }
+
+    // Déterminer automatiquement le meilleur numéro SOS (112 par défaut)
+    (function(){
+      const lang = (navigator.language || '').toLowerCase();
+      const btn = document.getElementById('btnSOS');
+      // si langue US/CA -> 911 (fallback 112 visible dans le texte)
+      if (lang.includes('en-us') || lang.includes('en-ca')) btn.href = 'tel:911';
+    })();
+
+    // Partage de position
+    document.getElementById('btnLoc').addEventListener('click', async () => {
+      const out = document.getElementById('result');
+      if (!navigator.geolocation) { out.textContent = "La géolocalisation n'est pas disponible."; return; }
+      out.textContent = "Obtention de la position…";
+      navigator.geolocation.getCurrentPosition(async (pos)=>{
+        const {latitude:lat, longitude:lon} = pos.coords;
+        const mapLink = `https://maps.google.com/?q=${lat},${lon}`;
+        const text = `Ma position : ${lat.toFixed(5)}, ${lon.toFixed(5)} — ${mapLink}`;
+        if (navigator.share) {
+          try { await navigator.share({title:"Ma position", text, url: mapLink}); out.textContent="Position partagée."; }
+          catch(e){ out.textContent="Partage annulé."; }
+        } else {
+          try { await navigator.clipboard.writeText(text); } catch(_) {}
+          out.innerHTML = `Copié dans le presse-papiers. <a href="${mapLink}" target="_blank" rel="noopener">Ouvrir la carte</a>`;
+        }
+      }, (err)=>{
+        out.textContent = "Impossible d’obtenir la position : " + err.message;
+      }, {enableHighAccuracy:true, timeout:15000});
+    });
+  </script>
+</body>
+</html>

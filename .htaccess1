@@ -1,0 +1,27 @@
+# Active la réécriture
+RewriteEngine On
+
+# --- Exceptions (fichiers servis tels quels)
+RewriteCond %{REQUEST_URI} ^/(robots\.txt|sitemap\.xml|ads\.txt|sos-monde/manifest\.webmanifest|sos-monde/sw\.js)$ [NC]
+RewriteRule ^ - [L]
+
+# --- Forcer HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# --- Canonique : domaine SANS www (conseillé)
+RewriteCond %{HTTP_HOST} ^www\.sos-monde\.com$ [NC]
+RewriteRule ^ https://sos-monde.com%{REQUEST_URI} [R=301,L]
+
+# (si tu préfères le www comme canonique, inverse plutôt:)
+# RewriteCond %{HTTP_HOST} ^sos-monde\.com$ [NC]
+# RewriteRule ^ https://www.sos-monde.com%{REQUEST_URI} [R=301,L]
+RewriteEngine On
+
+# Rediriger tout vers le HTTPS et le domaine nu (sans www)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.sos-monde\.com$ [NC]
+RewriteRule ^ https://sos-monde.com%{REQUEST_URI} [L,R=301]
+
+# (Optionnel) HSTS : active uniquement quand tout est OK en HTTPS
+#Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"

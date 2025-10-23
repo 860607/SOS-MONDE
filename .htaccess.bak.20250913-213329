@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Servir les fichiers/dossiers existants tels quels
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Ne pas r??crire ces fichiers sp?ciaux
+RewriteRule ^(robots\.txt|sitemap\.xml|ads\.txt)$ - [L]
+
+# Fallback SPA/PWA vers index.html
+RewriteRule . /index.html [L]

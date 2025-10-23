@@ -1,0 +1,3 @@
+# ads.txt de sos-monde.com
+# Aucune régie publicitaire autorisée pour le moment.
+# Ajoute ici les lignes officielles fournies par ta régie (ex: Google AdSense).
